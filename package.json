@@ -1,0 +1,32 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/ssh2": "^1.11.11",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "ssh2": "^1.14.0"
+  },
+  "name": "cc-ssh",
+  "description": "Ever wanted to SSH into your CC computer? I know you have!",
+  "version": "1.0.0",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erb3/cc-ssh.git"
+  },
+  "keywords": [
+    "computercraft",
+    "cc-tweaked",
+    "ssh"
+  ],
+  "author": "Erb3 + Pixium",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Erb3/cc-ssh/issues"
+  },
+  "homepage": "https://github.com/Erb3/cc-ssh#readme"
+}
