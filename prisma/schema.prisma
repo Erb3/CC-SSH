@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  username String     @id @unique
+  password String?
+  sshKeys  SshKey[]
+  computers Computer[]
+}
+
+model Computer {
+  id           String @id @unique
+  user         User   @relation(fields: [userUsername], references: [username])
+  secret       String @unique @default(uuid())
+  userUsername String
+}
+
+model SshKey {
+  id        String  @id @default(uuid())
+  publicKey String
+  user      User?   @relation(fields: [userUsername], references: [username])
+  userUsername  String
+}
