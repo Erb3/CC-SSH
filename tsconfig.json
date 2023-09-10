@@ -92,5 +92,5 @@
     /* Type Checking */
     "strict": true // Enable all strict type-checking options
   },
-  "exclude": ["node_modules", "dist", "tests", "jest.config.ts"]
+  "exclude": ["node_modules", "dist", "tests", "jest.config.ts", "cc"]
 }

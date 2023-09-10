@@ -1,5 +1,7 @@
-import { PrismaClient, User } from "@prisma/client";
+import { Prisma, PrismaClient, User } from "@prisma/client";
 import { AuthContext } from "ssh2";
+import { Computer } from "./computer";
+import { ComputerWithUser } from "./types";
 
 class Authenticator {
   prisma: PrismaClient;
@@ -20,8 +22,11 @@ class Authenticator {
     return true;
   }
 
-  async onAuth(ctx: AuthContext) {
-    if (ctx.method !== "password") return ctx.reject(["password"]);
+  async onAuth(ctx: AuthContext): Promise<null | ComputerWithUser> {
+    if (ctx.method !== "password") {
+      ctx.reject(["password"]);
+      return null;
+    }
 
     const computer = await this.prisma.computer.findUnique({
       where: {
@@ -33,17 +38,20 @@ class Authenticator {
     });
 
     if (!computer) {
-      return ctx.reject(["password"]);
+      ctx.reject(["password"]);
+      return null;
     }
 
     console.log("Checking password");
     if (await this.checkAuth(computer.user, ctx.password)) {
       console.log("Password OK");
-      return ctx.accept();
+      ctx.accept();
+      return computer;
     }
 
     console.log("Password bad.");
-    return ctx.reject(["password"]);
+    ctx.reject(["password"]);
+    return null;
   }
 }
 

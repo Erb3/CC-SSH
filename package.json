@@ -24,13 +24,17 @@
   "dependencies": {
     "@prisma/client": "^5.2.0",
     "bcrypt": "^5.1.1",
+    "blessed": "^0.1.81",
     "ssh2": "^1.14.0",
+    "terminal-kit": "^3.0.0",
     "ws": "^8.14.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/blessed": "^0.1.22",
     "@types/node": "^20.3.1",
     "@types/ssh2": "^1.11.13",
+    "@types/terminal-kit": "^2.5.1",
     "@types/ws": "^8.5.5",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1",
