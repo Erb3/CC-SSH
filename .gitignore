@@ -2,8 +2,12 @@ build
 .ssh
 .env
 host.key
-**.db
+*.db
 *.log*
+node_modules
+*.lua
+.DS_Store
+dist
 
 # Dependency directories
 node_modules/

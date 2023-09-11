@@ -13,7 +13,7 @@ import { Authenticator } from "./auth";
 import { CCWS } from "./ccws";
 import { Computer } from "./computer";
 import { inspect } from "util";
-import { Session } from "./session";
+import { SessionManager } from "./sessionManager";
 import { ComputerWithUser } from "./types";
 import assert from "assert";
 
@@ -29,8 +29,8 @@ async function run() {
   );
 
   const auth = new Authenticator(prisma);
-  const computers: { [id: string]: Computer } = {};
-  const ccws = new CCWS(prisma, computers);
+  const sessionManager = new SessionManager();
+  const ccws = new CCWS(prisma, sessionManager);
 
   new SSHServer(
     {
@@ -53,7 +53,7 @@ async function run() {
 
         client.once("session", (accept, reject) => {
           assert(computer);
-          new Session(accept, computer);
+          sessionManager.newSession(accept, computer);
         });
       });
 

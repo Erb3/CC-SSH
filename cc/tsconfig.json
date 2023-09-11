@@ -5,13 +5,19 @@
     "lib": ["ESNext"],
     "moduleResolution": "node",
     "strict": false,
-    "types": ["@jackmacwindows/lua-types/cc", "@jackmacwindows/craftos-types", "@jackmacwindows/cc-types"]
+    "types": [
+      "@jackmacwindows/lua-types/cc",
+      "@jackmacwindows/craftos-types",
+      "@jackmacwindows/cc-types"
+    ]
   },
   "tstl": {
     "luaTarget": "CC",
     "luaLibImport": "inline",
-    "luaBundle": "main.lua",
-    "luaBundleEntry": "main.ts"
+    "luaBundle": "dist/cc-ssh.lua",
+    "luaBundleEntry": "./src/main.ts",
+    "noHeader": true
+    // "sourceMapTraceback": true
   },
   "include": ["./src/*.ts"]
 }

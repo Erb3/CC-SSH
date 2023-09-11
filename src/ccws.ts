@@ -2,17 +2,18 @@ import { PrismaClient } from "@prisma/client";
 import { Server, createServer } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { Computer } from "./computer";
+import { SessionManager } from "./sessionManager";
 
 class CCWS {
   wss: WebSocketServer;
   httpServer: Server;
   prisma: PrismaClient;
-  computers: { [id: string]: Computer };
+  sessionManager: SessionManager;
 
-  constructor(prisma: PrismaClient, computers: { [id: string]: Computer }) {
+  constructor(prisma: PrismaClient, sessionManager: SessionManager) {
     this.httpServer = createServer();
     this.prisma = prisma;
-    this.computers = computers;
+    this.sessionManager = sessionManager;
 
     this.wss = new WebSocketServer({
       noServer: true,
@@ -20,7 +21,6 @@ class CCWS {
 
     this.httpServer.on("upgrade", async (req, socket, head) => {
       socket.on("error", (err) => console.error(err));
-
       if (!req.headers.authorization) {
         socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
         socket.destroy();
@@ -43,12 +43,16 @@ class CCWS {
 
       this.wss.handleUpgrade(req, socket, head, (ws) => {
         this.wss.emit("connection", ws, req);
-        this.computers[req.headers.authorization || "INTERNAL-SERVER-ERROR"] =
+        console.log("Computers", this.sessionManager.computers);
+
+        this.sessionManager.computers.set(
+          computer.id,
           new Computer(
             prisma,
             ws,
             req.headers.authorization || "INTERNAL-SERVER-ERROR"
-          );
+          )
+        );
       });
     });
 

@@ -16,10 +16,10 @@ devDependencies:
     version: 2.13.1
   '@jackmacwindows/typescript-to-lua':
     specifier: ^1.12.0
-    version: 1.16.1(typescript@4.9.5)
+    version: 1.16.1(typescript@5.1.3)
   typescript:
-    specifier: ^4.9.0
-    version: 4.9.5
+    specifier: 5.1.3
+    version: 5.1.3
 
 packages:
 
@@ -35,7 +35,7 @@ packages:
     resolution: {integrity: sha512-JAKD6YWw6ceEnyt4bAxK2C9tDs6LfU0DV2/ERqziX4ijk4oegJ5UkXAlIiG6uh/TJSACjN+HqUHVTNtb65mhag==}
     dev: true
 
-  /@jackmacwindows/typescript-to-lua@1.16.1(typescript@4.9.5):
+  /@jackmacwindows/typescript-to-lua@1.16.1(typescript@5.1.3):
     resolution: {integrity: sha512-Z+mL1R74Zv4Be6gBqFSe1flxCaiGhONr+sw9vskorK6nkfZnzpefkLOF5xvZQf2Vs5FOhMlk+Tzdzjd5Xl8Pqg==}
     engines: {node: '>=16.10.0'}
     hasBin: true
@@ -46,7 +46,7 @@ packages:
       enhanced-resolve: 5.15.0
       resolve: 1.22.4
       source-map: 0.7.4
-      typescript: 4.9.5
+      typescript: 5.1.3
     dev: true
 
   /@typescript-to-lua/language-extensions@1.0.0:
@@ -110,8 +110,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
+  /typescript@5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
